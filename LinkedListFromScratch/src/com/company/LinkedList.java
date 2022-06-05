@@ -339,6 +339,24 @@ public class LinkedList {
         return midNode;
     }
 
+    public boolean isPalindrome(Node head) {
+        if(head == null || head.next == null)
+            return true;
+
+        Node middle = findMiddle(head);
+        Node midStart = reverseList(middle.next);
+
+        Node firstStart = head;
+
+        while(midStart != null) {
+            if(firstStart.data != midStart.data)
+                return false;
+            firstStart = firstStart.next;
+            midStart = midStart.next;
+        }
+        return true;
+    }
+
     public Node nodeFromTail(Node head, int n) {
 
         Node ptr = head;
