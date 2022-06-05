@@ -116,7 +116,7 @@ public class LinkedList {
             } else {
             Node previous = head;
             int counter = 1;
-            while(counter < position) {
+            while(counter < position - 1) {
                 previous = previous.next;
                 counter++;
             }
