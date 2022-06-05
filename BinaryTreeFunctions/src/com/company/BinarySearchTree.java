@@ -34,7 +34,8 @@ public class BinarySearchTree {
 
     public void PreorderPrint(Node root) {
 
-        if (root == null) return;
+        if (root == null) 
+            return;
 
         System.out.print(root.data + " ");
         PreorderPrint(root.left);
@@ -43,7 +44,8 @@ public class BinarySearchTree {
 
     public void InorderPrint(Node root) {
 
-        if (root == null) return;
+        if (root == null) 
+            return;
 
         InorderPrint(root.left);
         System.out.print(root.data + " ");
