@@ -9,7 +9,6 @@ public class LinkedList {
 
     Node head;
     int length = 0;
-    static Node sorted;
 
     public void print(Node head) {
         Node temp = head;
