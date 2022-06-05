@@ -114,7 +114,6 @@ public class LinkedList {
             System.out.println("Invalid Position");
         } else if (position == 1) {
             head = head.next;
-            length--;
             } else {
             Node previous = head;
             int counter = 1;
@@ -124,8 +123,8 @@ public class LinkedList {
             }
             Node temp = previous.next;
             previous.next = temp.next;
-            length--;
         }
+        length--;
     }
 
     public void removeKey(int key) {
@@ -135,6 +134,7 @@ public class LinkedList {
 
         if (head.data == key) {
             head = head.next;
+            length--;
             return;
         }
 
@@ -307,13 +307,11 @@ public class LinkedList {
     public Node insertNodeInSortedList(Node head,int data) {
 
         Node newNode = new Node(data);
-
+        length++;
         if (head == null) {
-            length++;
             return newNode;
         } else if (head.data > newNode.data) {
             newNode.next = head;
-            length++;
             return newNode;
         } else {
         Node current = head;
@@ -325,7 +323,6 @@ public class LinkedList {
         }
         newNode.next = current;
         temp.next = newNode;
-        length++;
         return head;
         }
     }
@@ -357,27 +354,6 @@ public class LinkedList {
                 ptr = ptr.next;
         }
         return ptr;
-
-/*
-        if (head == null) return null;
-        if (n <= 0) throw new IllegalArgumentException("Invalid Value: n = " + n);
-
-        Node mainPtr = head;
-        Node referencePtr = head;
-
-        int count = 0;
-        while (count<n) {
-            if (referencePtr == null) throw new IllegalArgumentException(n + " is greater that the number of nodes in list.");
-            referencePtr = referencePtr.next;
-            count++;
-        }
-        while (referencePtr!=null) {
-            referencePtr = referencePtr.next;
-            mainPtr = mainPtr.next;
-        }
-        return mainPtr;
- */
-
     }
 
     public boolean containsLoop() {
@@ -445,11 +421,12 @@ public class LinkedList {
 
     public Node mergeLists(Node head1, Node head2) {
 
-        if (head1 == null) return head2;
-        if (head2 == null) return head1;
+        if (head1 == null) 
+            return head2;
+        if (head2 == null) 
+            return head1;
 
-        /*
-        Node head3 = null;
+        Node temp = null;
 
         if (head1.data < head2.data) {
             head3 = head1;
@@ -458,10 +435,7 @@ public class LinkedList {
             head3 = head2;
             head2 = head2.next;
         }
-
-        Node temp = head3; */
-
-        Node temp = new Node(Integer.MIN_VALUE);
+        // Node temp = new Node(Integer.MIN_VALUE);
         Node tail = temp;
 
         while (head1 != null && head2 != null) {
@@ -470,7 +444,7 @@ public class LinkedList {
                 head1 = head1.next;
             } else {
                 tail.next = head2;
-                head2.next = head2;
+                head2 = head2.next;
             }
             tail = tail.next;
         }
