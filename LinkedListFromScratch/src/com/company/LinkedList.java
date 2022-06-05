@@ -49,7 +49,6 @@ public class LinkedList {
 
         if (head == null) {
             head = newNode;
-            length++;
             return head;
         }
         Node temp = head;
@@ -69,7 +68,6 @@ public class LinkedList {
         } else if (position == 1) {
             newNode.next = head;
             head = newNode;
-            length++;
         } else {
             Node previous = head;
             int counter = 1;
@@ -80,8 +78,8 @@ public class LinkedList {
             Node temp = previous.next;
             newNode.next = temp;
             previous.next = newNode;
-            length++;
         }
+        length++;
         return newNode;
     }
 
@@ -479,8 +477,7 @@ public class LinkedList {
 
         if (head1==null)
             tail.next = head2;
-
-        if (head2 == null)
+        else if (head2 == null)
             tail.next = head1;
 
         return temp.next;
