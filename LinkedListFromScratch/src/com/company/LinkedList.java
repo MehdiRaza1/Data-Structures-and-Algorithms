@@ -429,10 +429,10 @@ public class LinkedList {
         Node temp = null;
 
         if (head1.data < head2.data) {
-            head3 = head1;
+            temp = head1;
             head1 = head1.next;
         } else {
-            head3 = head2;
+            temp = head2;
             head2 = head2.next;
         }
         // Node temp = new Node(Integer.MIN_VALUE);
@@ -454,7 +454,7 @@ public class LinkedList {
         else if (head2 == null)
             tail.next = head1;
 
-        return temp.next;
+        return temp;
     }
 
     public static int findMergeNode(Node head1, Node head2) {
@@ -463,18 +463,16 @@ public class LinkedList {
         Node temp2 = head2;
 
         while(temp1 != temp2) {
-            if (temp1.next == null) {
+            if (temp1.next == null)
                 temp1 = head2;
-            } else {
+            else
                 temp1 = temp1.next;
-            }
 
-            if (temp2.next == null) {
+            if (temp2.next == null)
                 temp2 = head1;
-            } else {
+            else
                 temp2 = temp2.next;
             }
-        }
         return temp1.data;
     }
 
